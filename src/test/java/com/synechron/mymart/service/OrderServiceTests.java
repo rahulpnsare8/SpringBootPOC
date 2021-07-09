@@ -19,7 +19,7 @@ import com.synechron.mymart.model.Order;
 import com.synechron.mymart.service.impl.OrderServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
-public class OrderServiceTests {
+class OrderServiceTests {
 	
 	@Mock
 	OrderDao orderDao;

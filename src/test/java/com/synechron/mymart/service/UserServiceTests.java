@@ -18,7 +18,7 @@ import com.synechron.mymart.model.User;
 import com.synechron.mymart.service.impl.UserServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
-public class UserServiceTests {
+class UserServiceTests {
 	
 	@Mock UserDao userDao;
 	

@@ -17,8 +17,4 @@ public interface UserDao extends JpaRepository<UserEntity, Integer> {
 
     @Query("select userEntity from UserEntity userEntity left join fetch userEntity.loginEntity")
 	public List<UserEntity> findAllUsers();
-//	
-//	public void saveUser(UserEntity userEntity);
-//	
-//	public UserEntity findUserById(int userId);
 }

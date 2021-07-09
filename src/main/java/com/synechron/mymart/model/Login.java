@@ -1,7 +1,5 @@
 package com.synechron.mymart.model;
 
-import com.sun.istack.NotNull;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,10 +7,8 @@ import lombok.Setter;
 @Setter
 public class Login {
 
-    @NotNull
     private String userName;
     
-    @NotNull
     private String password;
     
     private int userId;

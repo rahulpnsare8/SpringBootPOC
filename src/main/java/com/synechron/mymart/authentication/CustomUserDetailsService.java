@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import com.synechron.mymart.dao.LoginDao;
-import com.synechron.mymart.entity.LoginEntity;
 
 @Component
 public class CustomUserDetailsService implements UserDetailsService{
@@ -20,8 +19,12 @@ public class CustomUserDetailsService implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		LoginEntity loginEntity = loginDao.findByUserName(username).get();
-		return new User(loginEntity.getUserName(),loginEntity.getPassword(), new ArrayList<>());
+		var optionalLoginEntity = loginDao.findByUserName(username);
+		if(optionalLoginEntity.isPresent()) {
+			var loginEntity = optionalLoginEntity.get();
+			return new User(loginEntity.getUserName(),loginEntity.getPassword(), new ArrayList<>());
+		}
+		return null;
 	}
 		
 }

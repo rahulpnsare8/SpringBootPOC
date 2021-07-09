@@ -34,20 +34,20 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User saveUser(User user) {
-		UserEntity userEntity = userModelToEntity(user);
+		var userEntity = userModelToEntity(user);
 		UserEntity savedEntity = userDao.save(userEntity);
 		return userEntityToModel(savedEntity);
 	}
 
 	@Override
 	public User getUser(int userId) {
-		UserEntity userEntity = userDao.findById(userId);
+		var userEntity = userDao.findById(userId);
 		return userEntityToModel(userEntity);
 	}
 	
 	public User userEntityToModel(UserEntity userEntity) {
 		if(userEntity != null) {
-			User user = new User();
+			var user = new User();
 			user.setUserId(userEntity.getId());
 			user.setName(userEntity.getName());
 			user.setAddress(userEntity.getAddress());
@@ -59,13 +59,13 @@ public class UserServiceImpl implements UserService {
 	
 	public UserEntity userModelToEntity(User user) {
 		if(user != null) {
-			UserEntity userEntity = new UserEntity();
+			var userEntity = new UserEntity();
 			userEntity.setId(user.getUserId());
 			userEntity.setName(user.getName());
 			userEntity.setAddress(user.getAddress());
 			userEntity.setContactNumber(user.getContactNumber());
 			if(user.getCredentials() != null) {
-				LoginEntity loginEntity = new LoginEntity();
+				var loginEntity = new LoginEntity();
 				loginEntity.setUserName(user.getCredentials().getUserName());
 				loginEntity.setPassword(passwordEncoder.encode( user.getCredentials().getPassword()));
 				loginEntity.setUserEntity(userEntity);

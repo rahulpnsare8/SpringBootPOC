@@ -22,8 +22,7 @@ public class OrderController {
 	
 	@GetMapping("/getAll")
 	public List<Order> getUsers() {
-		 List<Order> orders = orderService.getAllOrders();
-		return orders;
+		 return  orderService.getAllOrders();
 	}
 	
 	@PostMapping("/save")
@@ -33,8 +32,7 @@ public class OrderController {
 	
 	@GetMapping("/get")
 	public Order getUser(@RequestParam int orderId) {
-		Order order = orderService.getOrder(orderId);
-		return order;
+		return orderService.getOrder(orderId);
 	}
 	
 	@GetMapping("/getByUserId")

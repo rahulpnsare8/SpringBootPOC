@@ -20,7 +20,7 @@ public class JwtTokenUtil implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private static final long JWT_TOKEN_VALIDITY = 50 * 60 * 60;
+	private static final long JWT_TOKEN_VALIDITY = 50L * 60L * 60L;
 	
 	@Value("${jwt.secret}")
 	private String secret;
@@ -30,7 +30,7 @@ public class JwtTokenUtil implements Serializable{
 	}
 
 	public <T> T getClaimFromToken(String token, Function<Claims, T> claimResolver){
-		final Claims claims = getAllClaimsFromToken(token);
+		final var claims = getAllClaimsFromToken(token);
 		return claimResolver.apply(claims);
 	}
 	
@@ -55,7 +55,7 @@ public class JwtTokenUtil implements Serializable{
 	}
 	
 	private Boolean isTokenExpired(String token) {
-		final Date expiration = getExpirationDateFromToken(token);
+		final var expiration = getExpirationDateFromToken(token);
 		return expiration.before(new Date());
 	}
 

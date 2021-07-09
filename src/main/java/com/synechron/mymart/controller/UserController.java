@@ -22,8 +22,7 @@ public class UserController {
 			
 	@GetMapping("/getAll")
 	public List<User> getUsers() {
-		List<User> users = userService.getUsers();
-		return users;
+		return userService.getUsers();
 	}
 	
 	@PostMapping("/register")
@@ -33,8 +32,7 @@ public class UserController {
 	
 	@GetMapping("/get")
 	public User getUser(@RequestParam int userId) {
-		User user = userService.getUser(userId);
-		return user;
+		return userService.getUser(userId);
 	}
 	
 

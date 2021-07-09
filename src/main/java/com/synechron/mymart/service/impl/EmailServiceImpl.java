@@ -19,7 +19,7 @@ public class EmailServiceImpl implements EmailService {
 
 	@Override
 	public String sendEmail(int orderId) {
-		SimpleMailMessage message = new SimpleMailMessage();
+		var message = new SimpleMailMessage();
 		message.setFrom(username);
 		message.setTo("rahul.pansare@synechron.com");
 		message.setText("Your order is successfull. Order number is "+orderId);

@@ -35,13 +35,16 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Order getOrder(int orderId) {
 		Optional<OrderEntity> optional = orderDao.findById(orderId);
-		OrderEntity orderEntity = optional.get();
-		return orderEntityToModel(orderEntity);
+		if(optional.isPresent()) {
+			var orderEntity = optional.get();
+			return orderEntityToModel(orderEntity);	
+		}
+		return null;
 	}
 
 	@Override
 	public List<Order> getAllOrdersByUserId(int userId) {
-		List<OrderEntity> orderEntityList = orderDao.findByUserId(userId);
+		var orderEntityList = orderDao.findByUserId(userId);
 		List<Order> orderList = new ArrayList<>();
 		for(OrderEntity entity : orderEntityList) {
 			orderList.add(orderEntityToModel(entity));
@@ -51,14 +54,14 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public void placeOrder(Order order) {
-		OrderEntity save = orderDao.save(orderModelToEntity(order));
+		var save = orderDao.save(orderModelToEntity(order));
 		if(save.getId() >0) {
 			emailService.sendEmail(save.getId());
 		}
 	}
 	
 	private Order orderEntityToModel(OrderEntity orderEntity) {
-		Order order = new Order();
+		var order = new Order();
 		order.setId(orderEntity.getId());
 		order.setOrderDate(orderEntity.getOrderDate());
 		order.setOrderStatus(orderEntity.getOrderStatus());
@@ -70,7 +73,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	private OrderEntity orderModelToEntity(Order order) {
-		OrderEntity orderEntity = new OrderEntity();
+		var orderEntity = new OrderEntity();
 		orderEntity.setId(order.getId());
 		orderEntity.setOrderDate(order.getOrderDate());
 		orderEntity.setOrderStatus(order.getOrderStatus());

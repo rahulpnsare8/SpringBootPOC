@@ -58,16 +58,16 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter{
 						.and();
 		
 		httpSecurity = httpSecurity.exceptionHandling()
-						.authenticationEntryPoint((request, response,ex) -> {
-							response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
-						}).and();
+						.authenticationEntryPoint((request, response,ex) -> 
+							response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage())
+						).and();
 		
 		httpSecurity.authorizeRequests()
 					.antMatchers("/user/**").permitAll()
 					.antMatchers("/login/**").permitAll()
 					.antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", 
 							"/configuration/security", "/swagger-ui/**", "/webjars/**", 
-							"/swagger-resources/configuration/ui", "/swagge‌​r-ui.html", 
+							"/swagger-resources/configuration/ui", 
 							"/swagger-resources/configuration/security").permitAll()
 					.antMatchers(HttpMethod.POST,"/login/").permitAll()
 					.antMatchers(HttpMethod.POST,"/user/").permitAll()
@@ -79,9 +79,9 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	 @Bean
 	    public CorsFilter corsFilter() {
-	        UrlBasedCorsConfigurationSource source =
+	        var source =
 	            new UrlBasedCorsConfigurationSource();
-	        CorsConfiguration config = new CorsConfiguration();
+	        var config = new CorsConfiguration();
 	        config.setAllowCredentials(true);
 	        config.addAllowedOrigin("*");
 	        config.addAllowedHeader("*");

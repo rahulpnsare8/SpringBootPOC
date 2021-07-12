@@ -32,9 +32,13 @@ dependencies {
 	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
 	
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'	
+	testImplementation  'io.cucumber:cucumber-java:6.10.4'
+    testImplementation  'io.cucumber:cucumber-junit:6.10.4'
+    testImplementation  'io.cucumber:cucumber-spring:6.10.4'
 }
 
 test {

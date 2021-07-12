@@ -63,14 +63,14 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter{
 						).and();
 		
 		httpSecurity.authorizeRequests()
-					.antMatchers("/user/**").permitAll()
+					.antMatchers("/user/register/**").permitAll()
 					.antMatchers("/login/**").permitAll()
 					.antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", 
 							"/configuration/security", "/swagger-ui/**", "/webjars/**", 
 							"/swagger-resources/configuration/ui", 
 							"/swagger-resources/configuration/security").permitAll()
 					.antMatchers(HttpMethod.POST,"/login/").permitAll()
-					.antMatchers(HttpMethod.POST,"/user/").permitAll()
+					.antMatchers(HttpMethod.POST,"/user/register").permitAll()
 					.anyRequest().authenticated();
 		
 		httpSecurity.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);

@@ -13,9 +13,9 @@ import io.cucumber.spring.CucumberContextConfiguration;
 @RunWith(Cucumber.class)
 @CucumberContextConfiguration
 @SpringBootTest(classes = {MymartApplication.class,
-				UserServiceCucumberTest.class},
+				UserApiCucumberTest.class},
 				webEnvironment = WebEnvironment.RANDOM_PORT)
 @CucumberOptions(plugin = "{pretty}", tags = "", features = "src/main/test/resources/features",glue = "/glue")
-public class UserServiceCucumberTest {
+public class UserApiCucumberTest {
 
 }
